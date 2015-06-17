@@ -87,15 +87,15 @@ class Bar(object):
                     self.expected_size, self.etadisp))
                 STREAM.flush()
 
-    def done(self):
+    def done(self, display_completed_bar=True):
         self.elapsed = time.time() - self.start
         elapsed_disp = self.format_time(self.elapsed)
         if not self.hide:
-            # Print completed bar with elapsed time  <- I don't want DAT :>
-            STREAM.write(BAR_TEMPLATE % (
-                self.label, self.filled_char * self.width,
-                self.empty_char * 0, self.last_progress,
-                self.expected_size, elapsed_disp))
+            if display_completed_bar:
+                STREAM.write(BAR_TEMPLATE % (
+                    self.label, self.filled_char * self.width,
+                    self.empty_char * 0, self.last_progress,
+                    self.expected_size, elapsed_disp))
             STREAM.write('\n')
             STREAM.flush()
 
