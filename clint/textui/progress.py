@@ -91,7 +91,7 @@ class Bar(object):
         self.elapsed = time.time() - self.start
         elapsed_disp = self.format_time(self.elapsed)
         if not self.hide:
-            # Print completed bar with elapsed time
+            # Print completed bar with elapsed time  <- I don't want DAT :>
             STREAM.write(BAR_TEMPLATE % (
                 self.label, self.filled_char * self.width,
                 self.empty_char * 0, self.last_progress,
